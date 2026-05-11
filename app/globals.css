@@ -1,26 +1,155 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
+/* ============================================================
+   KANORA — Design Tokens
+   ============================================================ */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Couleurs KANORA */
+  --color-k-bg:      #080808;
+  --color-k-bg2:     #0F0F0F;
+  --color-k-bg3:     #161616;
+  --color-k-bg4:     #1A1A1A;
+  --color-k-text:    #F0F0F0;
+  --color-k-text2:   #909090;
+  --color-k-text3:   #555555;
+  --color-k-accent:  #7C6FFF;
+  --color-k-accent2: #00D1FF;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Déclaration des utilitaires font-syne / font-dm pour Tailwind v4 */
+  --font-syne: var(--font-syne), "Syne", ui-sans-serif, sans-serif;
+  --font-dm:   var(--font-dm-sans), "DM Sans", ui-sans-serif, sans-serif;
+
+  /* Animations */
+  --animate-float:   float 8s ease-in-out infinite;
+  --animate-float2:  float 6s ease-in-out infinite 2s;
+  --animate-float3:  float 10s ease-in-out infinite 4s;
+  --animate-fade-up: fadeUp 0.7s ease both;
+  --animate-rise:    rise 12s linear infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-20px); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes rise {
+    0%   { opacity: 0; transform: translateY(100vh) scale(0); }
+    10%  { opacity: 0.8; }
+    90%  { opacity: 0.3; }
+    100% { opacity: 0; transform: translateY(-10vh) scale(1.5); }
+  }
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.6; }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ============================================================
+   Base
+   ============================================================ */
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: #080808;
+    color: #F0F0F0;
+    font-family: var(--font-dm-sans), "DM Sans", ui-sans-serif, sans-serif;
+    font-weight: 400;
+    font-stretch: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* Forcer Syne sur tous les titres — pas de fallback qui étire */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-syne), "Syne", ui-sans-serif, sans-serif;
+    font-stretch: 100%;
+    font-optical-sizing: none;
+    letter-spacing: normal;
+  }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: #080808; }
+  ::-webkit-scrollbar-thumb { background: #7C6FFF; border-radius: 4px; }
+  ::selection { background: rgba(124,111,255,0.3); }
 }
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+@layer utilities {
+
+  /* Forcer la police manuellement quand la classe Tailwind ne suffit pas */
+  .font-syne {
+    font-family: var(--font-syne), "Syne", ui-sans-serif, sans-serif !important;
+    font-stretch: 100% !important;
+  }
+  .font-dm {
+    font-family: var(--font-dm-sans), "DM Sans", ui-sans-serif, sans-serif !important;
+    font-stretch: 100% !important;
+  }
+
+  /* Gradient text */
+  .text-gradient {
+    background: linear-gradient(135deg, #7C6FFF 0%, #00D1FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-gradient-white {
+    background: linear-gradient(135deg, #ffffff 30%, #7C6FFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glass */
+  .glass {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  .glass-nav {
+    background: rgba(8,8,8,0.82);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  /* Glows */
+  .glow-accent    { box-shadow: 0 0 40px rgba(124,111,255,0.30); }
+  .glow-accent-sm { box-shadow: 0 0 20px rgba(124,111,255,0.18); }
+
+  /* Grid hero */
+  .grid-overlay {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+  }
+
+  /* Layout */
+  .section-pad {
+    padding-inline: 1.5rem;
+    padding-block: 5rem;
+  }
+  .container-k {
+    max-width: 80rem;
+    margin-inline: auto;
+    width: 100%;
+  }
+}
+
+/* Responsive section-pad */
+@media (min-width: 768px)  { .section-pad { padding-inline: 3rem;  padding-block: 7rem; } }
+@media (min-width: 1024px) { .section-pad { padding-inline: 5rem;  padding-block: 8rem; } }

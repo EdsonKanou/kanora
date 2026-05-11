@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { Syne, DM_Sans } from "next/font/google";
+import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import "./globals.css";
 
-// next/font injecte les variables CSS --font-syne et --font-dm-sans sur <html>
 const syne = Syne({
   subsets: ["latin"],
-  variable: "--font-syne",       // utilisé via var(--font-syne) dans le CSS
+  variable: "--font-syne",
   weight: ["400", "600", "700", "800"],
   display: "swap",
-  adjustFontFallback: false,     // évite le faux-bold du fallback qui étire
+  adjustFontFallback: false,
 });
 
 const dmSans = DM_Sans({
@@ -43,9 +43,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    // Les variables --font-syne et --font-dm-sans sont disponibles dans tout le DOM
-    <html lang="fr" className={`${syne.variable} ${dmSans.variable}`}>
-      <body>{children}</body>
+    <html lang="fr" className={`${syne.variable} ${dmSans.variable}`} data-theme="dark">
+      <body>
+        {/*
+          ThemeProvider est "use client" — il lit localStorage et pose
+          data-theme="dark"|"light" sur <html> côté client.
+          On met data-theme="dark" par défaut sur <html> pour le SSR
+          pour éviter le flash de thème clair au premier rendu.
+        */}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

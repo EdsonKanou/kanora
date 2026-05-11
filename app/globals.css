@@ -7,7 +7,6 @@
    KANORA — Design Tokens
    ============================================================ */
 @theme inline {
-  /* Couleurs KANORA */
   --color-k-bg:      #080808;
   --color-k-bg2:     #0F0F0F;
   --color-k-bg3:     #161616;
@@ -18,11 +17,9 @@
   --color-k-accent:  #7C6FFF;
   --color-k-accent2: #00D1FF;
 
-  /* Déclaration des utilitaires font-syne / font-dm pour Tailwind v4 */
   --font-syne: var(--font-syne), "Syne", ui-sans-serif, sans-serif;
   --font-dm:   var(--font-dm-sans), "DM Sans", ui-sans-serif, sans-serif;
 
-  /* Animations */
   --animate-float:   float 8s ease-in-out infinite;
   --animate-float2:  float 6s ease-in-out infinite 2s;
   --animate-float3:  float 10s ease-in-out infinite 4s;
@@ -50,44 +47,87 @@
 }
 
 /* ============================================================
+   THÈME SOMBRE (défaut — data-theme="dark" ou absence d'attribut)
+   ============================================================ */
+:root,
+[data-theme="dark"] {
+  --k-bg:      #080808;
+  --k-bg2:     #0F0F0F;
+  --k-bg3:     #161616;
+  --k-bg4:     #1A1A1A;
+  --k-text:    #F0F0F0;
+  --k-text2:   #909090;
+  --k-text3:   #505050;
+  --k-border:  rgba(255,255,255,0.07);
+  --k-border2: rgba(255,255,255,0.13);
+  --k-accent:  #7C6FFF;
+  --k-accent2: #00D1FF;
+  --k-glow:    rgba(124,111,255,0.35);
+  --k-nav-bg:  rgba(8,8,8,0.82);
+  --k-glass:   rgba(255,255,255,0.04);
+}
+
+/* ============================================================
+   THÈME CLAIR — data-theme="light"
+   ============================================================ */
+[data-theme="light"] {
+  --k-bg:      #F7F7FC;
+  --k-bg2:     #EFEFFA;
+  --k-bg3:     #E8E8F5;
+  --k-bg4:     #E0E0EF;
+  --k-text:    #0D0D1A;
+  --k-text2:   #50506A;
+  --k-text3:   #9090AA;
+  --k-border:  rgba(0,0,0,0.08);
+  --k-border2: rgba(0,0,0,0.14);
+  --k-accent:  #6058E8;
+  --k-accent2: #00A8CC;
+  --k-glow:    rgba(96,88,232,0.25);
+  --k-nav-bg:  rgba(247,247,252,0.88);
+  --k-glass:   rgba(255,255,255,0.65);
+}
+
+/* ============================================================
    Base
    ============================================================ */
 @layer base {
   *, *::before, *::after { box-sizing: border-box; }
 
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    /* Transition fluide entre les thèmes */
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
 
   body {
-    background: #080808;
-    color: #F0F0F0;
+    background: var(--k-bg);
+    color: var(--k-text);
     font-family: var(--font-dm-sans), "DM Sans", ui-sans-serif, sans-serif;
     font-weight: 400;
     font-stretch: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
-  /* Forcer Syne sur tous les titres — pas de fallback qui étire */
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-syne), "Syne", ui-sans-serif, sans-serif;
     font-stretch: 100%;
     font-optical-sizing: none;
-    letter-spacing: normal;
   }
 
   ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: #080808; }
-  ::-webkit-scrollbar-thumb { background: #7C6FFF; border-radius: 4px; }
-  ::selection { background: rgba(124,111,255,0.3); }
+  ::-webkit-scrollbar-track { background: var(--k-bg); }
+  ::-webkit-scrollbar-thumb { background: var(--k-accent); border-radius: 4px; }
+  ::selection { background: rgba(124,111,255,0.25); }
 }
 
 /* ============================================================
-   Utilities
+   Utilities — toutes basées sur les variables de thème
    ============================================================ */
 @layer utilities {
 
-  /* Forcer la police manuellement quand la classe Tailwind ne suffit pas */
   .font-syne {
     font-family: var(--font-syne), "Syne", ui-sans-serif, sans-serif !important;
     font-stretch: 100% !important;
@@ -99,13 +139,13 @@
 
   /* Gradient text */
   .text-gradient {
-    background: linear-gradient(135deg, #7C6FFF 0%, #00D1FF 100%);
+    background: linear-gradient(135deg, var(--k-accent) 0%, var(--k-accent2) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .text-gradient-white {
-    background: linear-gradient(135deg, #ffffff 30%, #7C6FFF 100%);
+    background: linear-gradient(135deg, var(--k-text) 30%, var(--k-accent) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -113,27 +153,28 @@
 
   /* Glass */
   .glass {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--k-glass);
+    border: 1px solid var(--k-border2);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
   }
   .glass-nav {
-    background: rgba(8,8,8,0.82);
+    background: var(--k-nav-bg);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border-bottom: 1px solid rgba(255,255,255,0.07);
+    border-bottom: 1px solid var(--k-border);
+    transition: background 0.3s ease;
   }
 
   /* Glows */
-  .glow-accent    { box-shadow: 0 0 40px rgba(124,111,255,0.30); }
-  .glow-accent-sm { box-shadow: 0 0 20px rgba(124,111,255,0.18); }
+  .glow-accent    { box-shadow: 0 0 40px var(--k-glow); }
+  .glow-accent-sm { box-shadow: 0 0 20px var(--k-glow); }
 
-  /* Grid hero */
+  /* Grid overlay hero */
   .grid-overlay {
     background-image:
-      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      linear-gradient(var(--k-border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--k-border) 1px, transparent 1px);
     background-size: 60px 60px;
     mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
   }
@@ -148,8 +189,36 @@
     margin-inline: auto;
     width: 100%;
   }
+
+  /* Transition globale sur les éléments theming */
+  .theme-transition {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  }
 }
 
-/* Responsive section-pad */
-@media (min-width: 768px)  { .section-pad { padding-inline: 3rem;  padding-block: 7rem; } }
-@media (min-width: 1024px) { .section-pad { padding-inline: 5rem;  padding-block: 8rem; } }
+@media (min-width: 768px)  { .section-pad { padding-inline: 3rem; padding-block: 7rem; } }
+@media (min-width: 1024px) { .section-pad { padding-inline: 5rem; padding-block: 8rem; } }
+
+/* ============================================================
+   Classes sémantiques de fond — réagissent au data-theme
+   Utiliser ces classes au lieu de style={{ background }}
+   ============================================================ */
+@layer utilities {
+  .bg-k-bg  { background: var(--k-bg)  !important; }
+  .bg-k-bg2 { background: var(--k-bg2) !important; }
+  .bg-k-bg3 { background: var(--k-bg3) !important; }
+  .bg-k-bg4 { background: var(--k-bg4) !important; }
+
+  .text-k-text  { color: var(--k-text)  !important; }
+  .text-k-text2 { color: var(--k-text2) !important; }
+  .text-k-text3 { color: var(--k-text3) !important; }
+
+  .border-k       { border-color: var(--k-border)  !important; }
+  .border-k2      { border-color: var(--k-border2) !important; }
+  .text-k-accent  { color: var(--k-accent)  !important; }
+  .text-k-accent2 { color: var(--k-accent2) !important; }
+}
+
+/* Filtre logo — s'adapte au thème */
+[data-theme="dark"]  { --k-logo-filter: grayscale(1) brightness(1.8) opacity(0.6); }
+[data-theme="light"] { --k-logo-filter: grayscale(1) brightness(0.3) opacity(0.5); }

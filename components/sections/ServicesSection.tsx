@@ -9,7 +9,7 @@ export default function ServicesSection() {
   return (
     <section
       className="section-pad"
-      style={{ background: "var(--color-k-bg)" }}
+      style={{ background: "var(--k-bg)" }}
     >
       <div className="container-k">
         {/* Header */}
@@ -26,7 +26,7 @@ export default function ServicesSection() {
           <FadeUp delay={0.15}>
             <p
               className="text-base md:text-lg font-light leading-[1.75]"
-              style={{ color: "var(--color-k-text2)" }}
+              style={{ color: "var(--k-text2)" }}
             >
               De l&apos;identité visuelle aux systèmes intelligents — nous
               construisons des expériences digitales qui marquent les esprits
@@ -54,8 +54,8 @@ function ServiceCard({ service }: { service: typeof SERVICES[0] }) {
       whileHover={{ y: -8, transition: { duration: 0.3, ease: "easeOut" } }}
       className="relative group rounded-2xl p-9 flex flex-col h-full cursor-pointer overflow-hidden border card-top-line transition-[border-color,box-shadow] duration-400"
       style={{
-        background: "var(--color-k-bg3)",
-        borderColor: "rgba(255,255,255,0.07)",
+        background: "var(--k-bg3)",
+        borderColor: "var(--k-border)",
       }}
       onMouseEnter={(e) => {
         (e.currentTarget as HTMLElement).style.borderColor = "rgba(124,111,255,0.3)";
@@ -63,7 +63,7 @@ function ServiceCard({ service }: { service: typeof SERVICES[0] }) {
           "0 24px 60px rgba(0,0,0,0.4), 0 0 40px rgba(124,111,255,0.08)";
       }}
       onMouseLeave={(e) => {
-        (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.07)";
+        (e.currentTarget as HTMLElement).style.borderColor = "var(--k-border)";
         (e.currentTarget as HTMLElement).style.boxShadow = "none";
       }}
     >
@@ -80,7 +80,7 @@ function ServiceCard({ service }: { service: typeof SERVICES[0] }) {
           width: 52, height: 52,
           background: "rgba(124,111,255,0.1)",
           border: "1px solid rgba(124,111,255,0.2)",
-          color: "var(--color-k-accent)",
+          color: "var(--k-accent)",
         }}
       >
         {service.icon}
@@ -94,7 +94,7 @@ function ServiceCard({ service }: { service: typeof SERVICES[0] }) {
       {/* Description */}
       <p
         className="text-sm font-light leading-[1.75] mb-6 flex-1"
-        style={{ color: "var(--color-k-text2)" }}
+        style={{ color: "var(--k-text2)" }}
       >
         {service.description}
       </p>
@@ -106,8 +106,8 @@ function ServiceCard({ service }: { service: typeof SERVICES[0] }) {
             key={tag}
             className="text-[11px] px-3 py-1 rounded-full border"
             style={{
-              color: "var(--color-k-text2)",
-              borderColor: "rgba(255,255,255,0.1)",
+              color: "var(--k-text2)",
+              borderColor: "var(--k-border2)",
             }}
           >
             {tag}
@@ -119,7 +119,7 @@ function ServiceCard({ service }: { service: typeof SERVICES[0] }) {
       <Link
         href={service.href}
         className="flex items-center gap-2 text-sm font-medium transition-all duration-300 group-hover:gap-4"
-        style={{ color: "var(--color-k-accent)" }}
+        style={{ color: "var(--k-accent)" }}
       >
         Explorer
         <motion.span

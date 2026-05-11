@@ -26,12 +26,12 @@ function HeroCard({
       className="glass rounded-2xl px-6 py-5 animate-float"
       style={{ animationDelay: `${delay * 2}s` }}
     >
-      <p className="text-[11px] tracking-[0.08em] uppercase mb-1" style={{ color: "var(--color-k-text3)" }}>
+      <p className="text-[11px] tracking-[0.08em] uppercase mb-1" style={{ color: "var(--k-text3)" }}>
         {label}
       </p>
       <p className="font-syne font-bold text-2xl text-gradient leading-none">{value}</p>
-      <p className="text-xs mt-1 font-light" style={{ color: "var(--color-k-text2)" }}>{sub}</p>
-      <div className="h-0.5 rounded-full mt-3 overflow-hidden" style={{ background: "rgba(255,255,255,0.08)" }}>
+      <p className="text-xs mt-1 font-light" style={{ color: "var(--k-text2)" }}>{sub}</p>
+      <div className="h-0.5 rounded-full mt-3 overflow-hidden" style={{ background: "var(--k-border2)" }}>
         <div
           className="h-full rounded-full"
           style={{
@@ -128,14 +128,14 @@ export default function HeroSection() {
             variants={fadeUpVariants}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-8 text-xs tracking-[0.08em]"
             style={{
-              borderColor: "rgba(255,255,255,0.12)",
-              background: "rgba(255,255,255,0.03)",
-              color: "var(--color-k-text2)",
+              borderColor: "var(--k-border2)",
+              background: "var(--k-glass)",
+              color: "var(--k-text2)",
             }}
           >
             <span
               className="w-1.5 h-1.5 rounded-full"
-              style={{ background: "var(--color-k-accent2)", animation: "pulseGlow 2s infinite" }}
+              style={{ background: "var(--k-accent2)", animation: "pulseGlow 2s infinite" }}
             />
             Studio Digital & IA — Paris / Global
           </motion.div>
@@ -159,7 +159,7 @@ export default function HeroSection() {
             animate="visible"
             variants={fadeUpVariants}
             className="font-syne text-sm md:text-base tracking-[0.28em] uppercase mb-7"
-            style={{ color: "var(--color-k-text2)" }}
+            style={{ color: "var(--k-text2)" }}
           >
             Design · Digital · Intelligence
           </motion.p>
@@ -171,7 +171,7 @@ export default function HeroSection() {
             animate="visible"
             variants={fadeUpVariants}
             className="text-base md:text-lg font-light leading-[1.75] max-w-[520px] mb-12"
-            style={{ color: "var(--color-k-text2)" }}
+            style={{ color: "var(--k-text2)" }}
           >
             Nous aidons les entreprises, startups et événements à créer des
             expériences digitales modernes grâce au branding, au web et à
@@ -206,7 +206,7 @@ export default function HeroSection() {
       {/* Bottom fade */}
       <div
         className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
-        style={{ background: "linear-gradient(to top, var(--color-k-bg), transparent)" }}
+        style={{ background: "linear-gradient(to top, var(--k-bg), transparent)" }}
       />
     </section>
   );

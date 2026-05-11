@@ -34,8 +34,8 @@ export default function StatsSection() {
     <div
       className="border-y px-6 md:px-12 lg:px-20 py-0"
       style={{
-        background: "var(--color-k-bg2)",
-        borderColor: "rgba(255,255,255,0.07)",
+        background: "var(--k-bg2)",
+        borderColor: "var(--k-border)",
       }}
     >
       <div className="container-k">
@@ -45,14 +45,14 @@ export default function StatsSection() {
               key={stat.label}
               className="flex flex-col items-center justify-center text-center py-12 px-6"
               style={{
-                borderRight: i < STATS.length - 1 ? "1px solid rgba(255,255,255,0.07)" : "none",
+                borderRight: i < STATS.length - 1 ? "1px solid var(--k-border)" : "none",
                 // On mobile, 2 col grid — reset right border for col 2
               }}
             >
               <Counter value={stat.value} suffix={stat.suffix} />
               <span
                 className="mt-2 text-xs tracking-[0.08em] uppercase font-medium"
-                style={{ color: "var(--color-k-text2)" }}
+                style={{ color: "var(--k-text2)" }}
               >
                 {stat.label}
               </span>

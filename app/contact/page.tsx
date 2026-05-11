@@ -5,7 +5,7 @@ import Footer from "@/components/layout/Footer";
 import { SectionTag, FadeUp } from "@/components/ui/index";
 
 const contactItems = [
-  { icon: "✉", label: "Email", value: "hello@kanora.studio" },
+  { icon: "✉", label: "Email", value: "edsonkanou1@gmail.com" },
   { icon: "💬", label: "WhatsApp", value: "+33 6 XX XX XX XX" },
   { icon: "📍", label: "Présence", value: "Paris · Yaoundé · Global" },
   { icon: "⏱", label: "Réponse", value: "Sous 24h ouvrées" },
@@ -19,7 +19,7 @@ export default function ContactPage() {
         {/* Hero */}
         <section
           className="px-6 pt-[140px] pb-20 md:px-12 lg:px-20"
-          style={{ background: "var(--color-k-bg)" }}
+          className="bg-k-bg"
         >
           <div className="container-k">
             <FadeUp>
@@ -33,7 +33,7 @@ export default function ContactPage() {
               </h1>
               <p
                 className="mt-6 text-lg font-light leading-[1.75] max-w-[520px]"
-                style={{ color: "var(--color-k-text2)" }}
+                style={{ color: "var(--k-text2)" }}
               >
                 Vous avez une vision. Nous avons l&apos;expertise pour la
                 concrétiser. Décrivez votre projet et nous vous répondons sous
@@ -46,7 +46,7 @@ export default function ContactPage() {
         {/* Form + info */}
         <section
           className="px-6 pb-32 md:px-12 lg:px-20"
-          style={{ background: "var(--color-k-bg2)" }}
+          className="bg-k-bg2"
         >
           <div className="container-k grid md:grid-cols-2 gap-16 items-start">
             {/* Left — info */}
@@ -60,7 +60,7 @@ export default function ContactPage() {
               </h2>
               <p
                 className="text-base font-light leading-[1.75] mb-10"
-                style={{ color: "var(--color-k-text2)" }}
+                style={{ color: "var(--k-text2)" }}
               >
                 Que vous ayez un brief complet ou simplement une idée, nous
                 sommes là pour vous accompagner à chaque étape.
@@ -71,8 +71,8 @@ export default function ContactPage() {
                     key={item.label}
                     className="flex items-center gap-4 p-5 rounded-xl border transition-all duration-300 hover:translate-x-1.5"
                     style={{
-                      background: "var(--color-k-bg3)",
-                      borderColor: "rgba(255,255,255,0.07)",
+                      background: "var(--k-bg3)",
+                      borderColor: "var(--k-border)",
                     }}
                     onMouseEnter={(e) =>
                       ((e.currentTarget as HTMLElement).style.borderColor =
@@ -87,7 +87,7 @@ export default function ContactPage() {
                       className="w-11 h-11 rounded-xl flex items-center justify-center text-lg flex-shrink-0"
                       style={{
                         background: "rgba(124,111,255,0.1)",
-                        color: "var(--color-k-accent)",
+                        color: "var(--k-accent)",
                       }}
                     >
                       {item.icon}
@@ -95,7 +95,7 @@ export default function ContactPage() {
                     <div>
                       <p
                         className="text-xs uppercase tracking-widest mb-0.5"
-                        style={{ color: "var(--color-k-text3)" }}
+                        style={{ color: "var(--k-text3)" }}
                       >
                         {item.label}
                       </p>
@@ -111,8 +111,8 @@ export default function ContactPage() {
               <div
                 className="rounded-2xl border p-10"
                 style={{
-                  background: "var(--color-k-bg3)",
-                  borderColor: "rgba(255,255,255,0.07)",
+                  background: "var(--k-bg3)",
+                  borderColor: "var(--k-border)",
                 }}
               >
                 <form
@@ -128,7 +128,7 @@ export default function ContactPage() {
                   <div>
                     <label
                       className="block text-xs uppercase tracking-widest mb-2"
-                      style={{ color: "var(--color-k-text2)" }}
+                      style={{ color: "var(--k-text2)" }}
                     >
                       Décrivez votre projet
                     </label>
@@ -137,13 +137,13 @@ export default function ContactPage() {
                       rows={5}
                       className="w-full rounded-xl px-4 py-3.5 text-sm font-light outline-none resize-none transition-all duration-300 focus:outline-none"
                       style={{
-                        background: "rgba(255,255,255,0.03)",
+                        background: "var(--k-glass)",
                         border: "1px solid rgba(255,255,255,0.12)",
-                        color: "var(--color-k-text)",
+                        color: "var(--k-text)",
                         lineHeight: 1.7,
                       }}
                       onFocus={(e) => {
-                        e.currentTarget.style.borderColor = "var(--color-k-accent)";
+                        e.currentTarget.style.borderColor = "var(--k-accent)";
                         e.currentTarget.style.boxShadow =
                           "0 0 0 3px rgba(124,111,255,0.12)";
                       }}
@@ -169,7 +169,7 @@ export default function ContactPage() {
 
                   <p
                     className="text-xs text-center"
-                    style={{ color: "var(--color-k-text3)" }}
+                    style={{ color: "var(--k-text3)" }}
                   >
                     Réponse garantie sous 24h ouvrées · 100% confidentiel
                   </p>
@@ -199,7 +199,7 @@ function FormField({
     <div>
       <label
         className="block text-xs uppercase tracking-widest mb-2"
-        style={{ color: "var(--color-k-text2)" }}
+        style={{ color: "var(--k-text2)" }}
       >
         {label}
       </label>
@@ -209,12 +209,12 @@ function FormField({
         required={required}
         className="w-full rounded-xl px-4 py-3.5 text-sm font-light outline-none transition-all duration-300"
         style={{
-          background: "rgba(255,255,255,0.03)",
+          background: "var(--k-glass)",
           border: "1px solid rgba(255,255,255,0.12)",
-          color: "var(--color-k-text)",
+          color: "var(--k-text)",
         }}
         onFocus={(e) => {
-          e.currentTarget.style.borderColor = "var(--color-k-accent)";
+          e.currentTarget.style.borderColor = "var(--k-accent)";
           e.currentTarget.style.boxShadow = "0 0 0 3px rgba(124,111,255,0.12)";
         }}
         onBlur={(e) => {

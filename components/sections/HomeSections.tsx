@@ -9,7 +9,7 @@ export function WhySection() {
   return (
     <section
       className="section-pad relative overflow-hidden"
-      style={{ background: "var(--color-k-bg)" }}
+      style={{ background: "var(--k-bg)" }}
     >
       {/* BG glow */}
       <div
@@ -46,8 +46,8 @@ export function WhySection() {
                   whileHover={{ x: 6, transition: { duration: 0.2 } }}
                   className="flex items-start gap-4 p-5 rounded-xl border border-transparent transition-all duration-300 cursor-default"
                   onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.background = "var(--color-k-bg3)";
-                    (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.07)";
+                    (e.currentTarget as HTMLElement).style.background = "var(--k-bg3)";
+                    (e.currentTarget as HTMLElement).style.borderColor = "var(--k-border)";
                   }}
                   onMouseLeave={(e) => {
                     (e.currentTarget as HTMLElement).style.background = "transparent";
@@ -58,14 +58,14 @@ export function WhySection() {
                     className="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-lg text-sm mt-0.5"
                     style={{
                       background: "rgba(124,111,255,0.1)",
-                      color: "var(--color-k-accent)",
+                      color: "var(--k-accent)",
                     }}
                   >
                     {point.icon}
                   </div>
                   <div>
                     <h4 className="font-syne font-semibold text-sm mb-1">{point.title}</h4>
-                    <p className="text-sm font-light leading-relaxed" style={{ color: "var(--color-k-text2)" }}>
+                    <p className="text-sm font-light leading-relaxed" style={{ color: "var(--k-text2)" }}>
                       {point.desc}
                     </p>
                   </div>
@@ -82,7 +82,7 @@ export function WhySection() {
 // ─── PROCESS ────────────────────────────────────────────────
 export function ProcessSection() {
   return (
-    <section className="section-pad" style={{ background: "var(--color-k-bg2)" }}>
+    <section className="section-pad" style={{ background: "var(--k-bg2)" }}>
       <div className="container-k">
         <FadeUp className="text-center mb-20">
           <SectionTag>Notre Processus</SectionTag>
@@ -100,7 +100,7 @@ export function ProcessSection() {
             className="hidden md:block absolute top-7 left-[10%] right-[10%] h-px pointer-events-none"
             style={{
               background:
-                "linear-gradient(90deg, transparent, rgba(255,255,255,0.12), #7C6FFF, rgba(255,255,255,0.12), transparent)",
+                "linear-gradient(90deg, transparent, var(--k-border2), #7C6FFF, var(--k-border2), transparent)",
             }}
           />
 
@@ -108,22 +108,22 @@ export function ProcessSection() {
             <StaggerItem key={step.num} className="text-center relative z-10">
               <motion.div
                 whileHover={{
-                  background: "var(--color-k-accent)",
-                  borderColor: "var(--color-k-accent)",
+                  background: "var(--k-accent)",
+                  borderColor: "var(--k-accent)",
                   boxShadow: "0 0 24px rgba(124,111,255,0.5)",
                   transition: { duration: 0.2 },
                 }}
                 className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-6 border font-syne font-bold text-lg cursor-default"
                 style={{
-                  background: "var(--color-k-bg3)",
-                  borderColor: "rgba(255,255,255,0.12)",
-                  color: "var(--color-k-text2)",
+                  background: "var(--k-bg3)",
+                  borderColor: "var(--k-border2)",
+                  color: "var(--k-text2)",
                 }}
               >
                 {step.num}
               </motion.div>
               <h4 className="font-syne font-bold text-sm mb-2">{step.title}</h4>
-              <p className="text-xs font-light leading-relaxed" style={{ color: "var(--color-k-text2)" }}>
+              <p className="text-xs font-light leading-relaxed" style={{ color: "var(--k-text2)" }}>
                 {step.desc}
               </p>
             </StaggerItem>
@@ -137,7 +137,7 @@ export function ProcessSection() {
 // ─── TESTIMONIALS ───────────────────────────────────────────
 export function TestimonialsSection() {
   return (
-    <section className="section-pad" style={{ background: "var(--color-k-bg)" }}>
+    <section className="section-pad" style={{ background: "var(--k-bg)" }}>
       <div className="container-k">
         <FadeUp className="text-center mb-16">
           <SectionTag>Témoignages</SectionTag>
@@ -156,14 +156,14 @@ export function TestimonialsSection() {
                 whileHover={{ y: -6, transition: { duration: 0.3 } }}
                 className="relative rounded-2xl p-8 border overflow-hidden transition-[border-color] duration-300"
                 style={{
-                  background: "var(--color-k-bg3)",
-                  borderColor: "rgba(255,255,255,0.07)",
+                  background: "var(--k-bg3)",
+                  borderColor: "var(--k-border)",
                 }}
                 onMouseEnter={(e) =>
                   ((e.currentTarget as HTMLElement).style.borderColor = "rgba(124,111,255,0.2)")
                 }
                 onMouseLeave={(e) =>
-                  ((e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.07)")
+                  ((e.currentTarget as HTMLElement).style.borderColor = "var(--k-border)")
                 }
               >
                 {/* Big quote mark */}
@@ -177,14 +177,14 @@ export function TestimonialsSection() {
                 {/* Stars */}
                 <div className="flex gap-1 mb-4">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <span key={i} className="text-[13px]" style={{ color: "var(--color-k-accent)" }}>★</span>
+                    <span key={i} className="text-[13px]" style={{ color: "var(--k-accent)" }}>★</span>
                   ))}
                 </div>
 
                 {/* Quote */}
                 <p
                   className="text-sm font-light leading-[1.8] italic mb-6 relative z-10"
-                  style={{ color: "var(--color-k-text)" }}
+                  style={{ color: "var(--k-text)" }}
                 >
                   &ldquo;{t.quote}&rdquo;
                 </p>
@@ -199,7 +199,7 @@ export function TestimonialsSection() {
                   </div>
                   <div>
                     <p className="font-syne font-semibold text-sm">{t.name}</p>
-                    <p className="text-xs" style={{ color: "var(--color-k-text2)" }}>{t.role}</p>
+                    <p className="text-xs" style={{ color: "var(--k-text2)" }}>{t.role}</p>
                   </div>
                 </div>
               </motion.div>
@@ -216,7 +216,7 @@ export function CtaSection() {
   return (
     <section
       className="relative overflow-hidden text-center px-6 py-40 md:px-12"
-      style={{ background: "var(--color-k-bg2)" }}
+      style={{ background: "var(--k-bg2)" }}
     >
       {/* BG glow */}
       <div
@@ -244,7 +244,7 @@ export function CtaSection() {
           </h2>
           <p
             className="text-base md:text-lg font-light leading-[1.75] max-w-[540px] mx-auto mb-12"
-            style={{ color: "var(--color-k-text2)" }}
+            style={{ color: "var(--k-text2)" }}
           >
             Du branding aux solutions IA, KANORA accompagne les marques
             ambitieuses dans la création d&apos;expériences digitales modernes

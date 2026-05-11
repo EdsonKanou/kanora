@@ -61,7 +61,7 @@ export default function ServicesPage() {
         {/* Hero */}
         <section
           className="px-6 pt-[140px] pb-20 md:px-12 lg:px-20"
-          style={{ background: "var(--color-k-bg)" }}
+          className="bg-k-bg"
         >
           <div className="container-k">
             <FadeUp>
@@ -76,7 +76,7 @@ export default function ServicesPage() {
               </h1>
               <p
                 className="mt-6 text-lg font-light leading-[1.75] max-w-[540px]"
-                style={{ color: "var(--color-k-text2)" }}
+                style={{ color: "var(--k-text2)" }}
               >
                 Trois pôles d&apos;expertise complémentaires pour construire,
                 lancer et scaler votre présence digitale avec l&apos;impact
@@ -89,7 +89,7 @@ export default function ServicesPage() {
         {/* Service blocks */}
         <section
           className="px-6 pb-32 md:px-12 lg:px-20"
-          style={{ background: "var(--color-k-bg2)" }}
+          className="bg-k-bg2"
         >
           <div className="container-k flex flex-col gap-6 pt-6">
             {serviceDetails.map((s, i) => (
@@ -98,8 +98,8 @@ export default function ServicesPage() {
                   id={s.id}
                   className="rounded-2xl border p-10 md:p-14 grid md:grid-cols-2 gap-14 items-center"
                   style={{
-                    background: "var(--color-k-bg3)",
-                    borderColor: "rgba(255,255,255,0.07)",
+                    background: "var(--k-bg3)",
+                    borderColor: "var(--k-border)",
                   }}
                 >
                   <div>
@@ -109,7 +109,7 @@ export default function ServicesPage() {
                     </h2>
                     <p
                       className="text-base font-light leading-[1.8] mb-8"
-                      style={{ color: "var(--color-k-text2)" }}
+                      style={{ color: "var(--k-text2)" }}
                     >
                       {s.description}
                     </p>
@@ -123,13 +123,13 @@ export default function ServicesPage() {
                         key={d}
                         className="p-4 rounded-xl border"
                         style={{
-                          background: "rgba(255,255,255,0.02)",
-                          borderColor: "rgba(255,255,255,0.07)",
+                          background: "var(--k-glass)",
+                          borderColor: "var(--k-border)",
                         }}
                       >
                         <p
                           className="text-[11px] uppercase tracking-widest mb-1"
-                          style={{ color: "var(--color-k-text3)" }}
+                          style={{ color: "var(--k-text3)" }}
                         >
                           Livrable
                         </p>

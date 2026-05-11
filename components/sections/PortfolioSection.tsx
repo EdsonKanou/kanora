@@ -44,15 +44,15 @@ function ProjectCard({
       whileHover={{ y: -8, transition: { duration: 0.35, ease: "easeOut" } }}
       className="group rounded-2xl overflow-hidden border cursor-pointer transition-[border-color,box-shadow] duration-400"
       style={{
-        background: "var(--color-k-bg3)",
-        borderColor: "rgba(255,255,255,0.07)",
+        background: "var(--k-bg3)",
+        borderColor: "var(--k-border)",
       }}
       onMouseEnter={(e) => {
         (e.currentTarget as HTMLElement).style.borderColor = "rgba(124,111,255,0.25)";
         (e.currentTarget as HTMLElement).style.boxShadow = "0 32px 80px rgba(0,0,0,0.5)";
       }}
       onMouseLeave={(e) => {
-        (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.07)";
+        (e.currentTarget as HTMLElement).style.borderColor = "var(--k-border)";
         (e.currentTarget as HTMLElement).style.boxShadow = "none";
       }}
     >
@@ -79,17 +79,17 @@ function ProjectCard({
       <div className="p-6">
         <p
           className="text-[11px] tracking-[0.1em] uppercase mb-2 font-medium"
-          style={{ color: "var(--color-k-accent)" }}
+          style={{ color: "var(--k-accent)" }}
         >
           {project.category}
         </p>
         <h3 className="font-syne font-bold text-lg mb-1">{project.name}</h3>
-        <p className="text-sm font-semibold mb-2" style={{ color: "var(--color-k-text2)" }}>
+        <p className="text-sm font-semibold mb-2" style={{ color: "var(--k-text2)" }}>
           {project.subtitle}
         </p>
         <p
           className="text-sm font-light leading-relaxed mb-4"
-          style={{ color: "var(--color-k-text2)" }}
+          style={{ color: "var(--k-text2)" }}
         >
           {project.description}
         </p>
@@ -99,8 +99,8 @@ function ProjectCard({
               key={tag}
               className="text-[11px] px-2.5 py-1 rounded-full border"
               style={{
-                color: "var(--color-k-text3)",
-                borderColor: "rgba(255,255,255,0.08)",
+                color: "var(--k-text3)",
+                borderColor: "var(--k-border)",
               }}
             >
               {tag}
@@ -118,7 +118,7 @@ export default function PortfolioSection() {
   return (
     <section
       className="section-pad"
-      style={{ background: "var(--color-k-bg2)" }}
+      style={{ background: "var(--k-bg2)" }}
     >
       <div className="container-k">
         {/* Header */}

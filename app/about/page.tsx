@@ -45,7 +45,7 @@ export default function AboutPage() {
         {/* Hero */}
         <section
           className="px-6 pt-[140px] pb-24 md:px-12 lg:px-20"
-          style={{ background: "var(--color-k-bg)" }}
+          className="bg-k-bg"
         >
           <div className="container-k">
             <FadeUp>
@@ -60,7 +60,7 @@ export default function AboutPage() {
               </h1>
               <p
                 className="mt-6 text-lg font-light leading-[1.75] max-w-[560px]"
-                style={{ color: "var(--color-k-text2)" }}
+                style={{ color: "var(--k-text2)" }}
               >
                 KANORA est né de la conviction que les marques africaines et
                 globales méritent une présence digitale au niveau des meilleures
@@ -73,7 +73,7 @@ export default function AboutPage() {
         {/* Vision / Mission / Philosophy */}
         <section
           className="px-6 pb-24 md:px-12 lg:px-20"
-          style={{ background: "var(--color-k-bg2)" }}
+          className="bg-k-bg2"
         >
           <div className="container-k grid md:grid-cols-2 gap-5">
             {cards.map((c, i) => (
@@ -83,7 +83,7 @@ export default function AboutPage() {
                   style={{
                     background: c.accent
                       ? "rgba(124,111,255,0.04)"
-                      : "var(--color-k-bg3)",
+                      : "var(--k-bg3)",
                     borderColor: c.accent
                       ? "rgba(124,111,255,0.2)"
                       : "rgba(255,255,255,0.07)",
@@ -98,7 +98,7 @@ export default function AboutPage() {
                   </h3>
                   <p
                     className="text-base font-light leading-[1.8]"
-                    style={{ color: "var(--color-k-text2)" }}
+                    style={{ color: "var(--k-text2)" }}
                   >
                     {c.body}
                   </p>
@@ -111,7 +111,7 @@ export default function AboutPage() {
         {/* Values */}
         <section
           className="px-6 pb-32 md:px-12 lg:px-20 text-center"
-          style={{ background: "var(--color-k-bg)" }}
+          className="bg-k-bg"
         >
           <div className="container-k">
             <FadeUp className="mb-16">
@@ -129,17 +129,17 @@ export default function AboutPage() {
                   <div
                     className="p-8 rounded-2xl border text-left transition-all duration-300 hover:-translate-y-1.5 hover:border-[rgba(124,111,255,0.3)]"
                     style={{
-                      background: "var(--color-k-bg2)",
-                      borderColor: "rgba(255,255,255,0.07)",
+                      background: "var(--k-bg2)",
+                      borderColor: "var(--k-border)",
                     }}
                   >
-                    <div className="text-2xl mb-4" style={{ color: "var(--color-k-accent)" }}>
+                    <div className="text-2xl mb-4" style={{ color: "var(--k-accent)" }}>
                       {v.icon}
                     </div>
                     <h4 className="font-syne font-bold text-base mb-2">{v.title}</h4>
                     <p
                       className="text-sm font-light leading-relaxed"
-                      style={{ color: "var(--color-k-text2)" }}
+                      style={{ color: "var(--k-text2)" }}
                     >
                       {v.desc}
                     </p>

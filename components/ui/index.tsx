@@ -22,10 +22,10 @@ export function Button({ children, href, variant = "primary", className, onClick
     primary:
       "bg-gradient-to-r from-[#7C6FFF] to-[#8B5CF6] text-white hover:brightness-110 hover:-translate-y-0.5 hover:shadow-[0_16px_40px_rgba(124,111,255,0.4)]",
     ghost:
-      "border text-[var(--color-k-text)] hover:border-[var(--color-k-accent)] hover:text-[var(--color-k-accent)] hover:bg-[rgba(124,111,255,0.05)]",
+      "border text-[var(--k-text)] hover:border-[var(--k-accent)] hover:text-[var(--k-accent)] hover:bg-[rgba(124,111,255,0.05)]",
   };
 
-  const ghostBorder = variant === "ghost" ? { borderColor: "rgba(255,255,255,0.18)" } : {};
+  const ghostBorder = variant === "ghost" ? { borderColor: "var(--k-border2)" } : {};
 
   const cls = cn(base, variants[variant], className);
 
@@ -49,7 +49,7 @@ export function SectionTag({ children }: { children: React.ReactNode }) {
     <span
       className="inline-block text-[11px] font-medium tracking-[0.14em] uppercase px-3.5 py-1.5 rounded-full border"
       style={{
-        color: "var(--color-k-accent)",
+        color: "var(--k-accent)",
         borderColor: "rgba(124,111,255,0.3)",
         background: "rgba(124,111,255,0.06)",
       }}

@@ -3,7 +3,9 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { SectionTag, FadeUp, Button } from "@/components/ui/index";
 
-export const metadata: Metadata = { title: "Services" };
+export const metadata: Metadata = {
+  title: "Services",
+};
 
 const serviceDetails = [
   {
@@ -41,7 +43,7 @@ const serviceDetails = [
     tag: "Service 03",
     title: "IA & Automation",
     description:
-      "L'intelligence artificielle n'est plus une option — c'est un avantage concurrentiel. Nous déployons des solutions IA sur mesure qui automatisent et amplifient vos opérations.",
+      "L'intelligence artificielle devient un avantage concurrentiel. Nous déployons des solutions IA sur mesure qui automatisent et amplifient vos opérations.",
     deliverables: [
       "Assistants IA custom",
       "Chatbots WhatsApp",
@@ -57,92 +59,129 @@ export default function ServicesPage() {
   return (
     <>
       <Navbar />
-      <main>
-        {/* Hero */}
-        <section
-          className="px-6 pt-[140px] pb-20 md:px-12 lg:px-20"
-          className="bg-k-bg"
-        >
+
+      <main className="overflow-hidden">
+
+        {/* =========================
+            HERO
+        ========================= */}
+        <section className="bg-k-bg px-6 pt-[140px] pb-20 md:px-12 lg:px-20">
+
           <div className="container-k">
             <FadeUp>
+
               <SectionTag>Nos Services</SectionTag>
+
               <h1
-                className="font-syne font-extrabold tracking-tight leading-[1.0] mt-5"
-                style={{ fontSize: "clamp(52px, 8vw, 100px)" }}
+                className="
+                  mt-5
+                  font-syne
+                  font-extrabold
+                  tracking-[-0.05em]
+                  leading-[0.95]
+                  text-[clamp(52px,8vw,100px)]
+                "
               >
                 Solutions<br />
-                <span className="text-gradient">premium</span>
-                <br />sur mesure
+                <span className="text-gradient">premium</span><br />
+                sur mesure
               </h1>
-              <p
-                className="mt-6 text-lg font-light leading-[1.75] max-w-[540px]"
-                style={{ color: "var(--k-text2)" }}
-              >
+
+              <p className="mt-6 max-w-[540px] text-lg leading-[1.8] text-white/60">
                 Trois pôles d&apos;expertise complémentaires pour construire,
-                lancer et scaler votre présence digitale avec l&apos;impact
-                qu&apos;elle mérite.
+                lancer et scaler votre présence digitale avec impact.
               </p>
+
             </FadeUp>
           </div>
         </section>
 
-        {/* Service blocks */}
-        <section
-          className="px-6 pb-32 md:px-12 lg:px-20"
-          className="bg-k-bg2"
-        >
+        {/* =========================
+            SERVICES
+        ========================= */}
+        <section className="bg-k-bg2 px-6 pb-32 md:px-12 lg:px-20">
+
           <div className="container-k flex flex-col gap-6 pt-6">
+
             {serviceDetails.map((s, i) => (
               <FadeUp key={s.id} delay={i * 0.1}>
+
                 <div
                   id={s.id}
-                  className="rounded-2xl border p-10 md:p-14 grid md:grid-cols-2 gap-14 items-center"
-                  style={{
-                    background: "var(--k-bg3)",
-                    borderColor: "var(--k-border)",
-                  }}
+                  className="
+                    grid
+                    items-center
+                    gap-14
+                    rounded-2xl
+                    border
+                    border-white/10
+                    bg-white/[0.03]
+                    p-10
+                    backdrop-blur-xl
+                    transition-all
+                    duration-500
+                    hover:-translate-y-2
+                    hover:border-violet-400/30
+                    md:grid-cols-2
+                    md:p-14
+                  "
                 >
+
+                  {/* LEFT */}
                   <div>
                     <SectionTag>{s.tag}</SectionTag>
-                    <h2 className="font-syne font-extrabold text-4xl leading-[1.1] tracking-tight mt-4 mb-5">
+
+                    <h2 className="mt-4 mb-5 font-syne text-4xl font-extrabold leading-[1.1] tracking-tight">
                       {s.title}
                     </h2>
-                    <p
-                      className="text-base font-light leading-[1.8] mb-8"
-                      style={{ color: "var(--k-text2)" }}
-                    >
+
+                    <p className="mb-8 text-white/60 leading-[1.8]">
                       {s.description}
                     </p>
+
                     <Button href="/contact" variant="primary">
                       Demander un devis
                     </Button>
                   </div>
+
+                  {/* RIGHT */}
                   <div className="grid grid-cols-2 gap-3">
+
                     {s.deliverables.map((d) => (
                       <div
                         key={d}
-                        className="p-4 rounded-xl border"
-                        style={{
-                          background: "var(--k-glass)",
-                          borderColor: "var(--k-border)",
-                        }}
+                        className="
+                          rounded-xl
+                          border
+                          border-white/10
+                          bg-white/[0.02]
+                          p-4
+                          transition
+                          hover:border-violet-400/30
+                        "
                       >
-                        <p
-                          className="text-[11px] uppercase tracking-widest mb-1"
-                          style={{ color: "var(--k-text3)" }}
-                        >
+                        <p className="mb-1 text-[11px] uppercase tracking-widest text-white/40">
                           Livrable
                         </p>
-                        <p className="text-sm font-medium">{d}</p>
+
+                        <p className="text-sm text-white">
+                          {d}
+                        </p>
                       </div>
                     ))}
+
                   </div>
+
                 </div>
+
               </FadeUp>
             ))}
+
           </div>
         </section>
+
       </main>
+
       <Footer />
     </>
   );
